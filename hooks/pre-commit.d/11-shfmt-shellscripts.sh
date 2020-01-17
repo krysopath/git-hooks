@@ -7,8 +7,6 @@ SHFMT_FORCE=true
 SHFMT="$(which shfmt)"
 SHFMT_ARGS="-ln $LINT_SHELL -ci -bn -i 4 -w"
 
-set -x
-
 if [ ! -z "$SHFMT" ]; then
     if [ ! -e "$CHANGED" ]; then
         # run shfmt with args
