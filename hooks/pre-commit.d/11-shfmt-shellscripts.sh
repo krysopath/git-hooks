@@ -1,5 +1,4 @@
 #!/bin/bash
-set -x
 
 STAGED="$(git diff --staged --name-only)"
 CHANGED="$(grep '^.*\.sh' <<<"$STAGED" || [[ $? == 1 ]])"
@@ -15,7 +14,7 @@ if [ ! -z "$SHFMT" ]; then
 		# shellcheck disable=SC2086
 		$SHFMT $SHFMT_ARGS $CHANGED
 		# Stage updated/shfmt'ed files
-		#git add "$CHANGED"
+		git add -u
 	fi
 else
 	echo "$(tput setaf 4)WARN: $0: no shfmt found in PATH: $PATH"
